@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أحمد محمد خلف | Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #030712;
+            --surface: #111827;
+            --primary: #0ea5e9;
+            --secondary: #6366f1;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border: rgba(255, 255, 255, 0.08);
+            --gradient: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 8%;
+            position: relative;
+            background: radial-gradient(circle at center, #1e1b4b 0%, var(--bg) 70%);
+        }
+
+        .hero h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .hero .typing {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 25px;
+            min-height: 45px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 35px;
+            font-size: 1.1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            background: var(--gradient);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-main);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 8%;
+        }
+
+        .sec-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .sec-title h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .sec-title p {
+            color: var(--text-muted);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 35px;
+            border-radius: 20px;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .skill-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .skill-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 2px solid var(--border);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--bg);
+        }
+
+        .timeline-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .timeline-content .date {
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h4 {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--secondary);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 45px;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            nav ul { display: none; }
+            .menu-btn { display: block; }
+            .hero h1 { font-size: 2.6rem; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Ahmed.K</div>
+        <div class="menu-btn" id="menu-btn"><i class="fas fa-bars"></i></div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h3>Welcome, I am</h3>
+            <h1>Ahmed Mohammed Khalaf</h1>
+            <div class="typing" id="typing-text"></div>
+            <p>Combining analytical chemistry principles with modern data science, AI workflows, and software automation solutions.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn">Explore Projects</a>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="sec-title">
+            <h2>About Me</h2>
+            <p>Get to know my background and academic trajectory</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <p>I am an undergraduate student studying Chemistry at the Faculty of Science, <strong>Al-Azhar University (Assiut Branch)</strong>.</p>
+                <p>Expanding my horizons into technology, I am actively enrolled in the <strong>Digital Egypt Pioneers Initiative (DEPI)</strong> focusing on the Artificial Intelligence and Data Science track.</p>
+                <p>I bridge analytical thinking with practical programming, specializing in Python data libraries, workflow automation with n8n, and database structuring.</p>
+            </div>
+            <div>
+                <div class="about-card" style="text-align: center; direction: rtl;">
+                    <i class="fas fa-brain" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px; font-size: 1.3rem;">Analytical Mindset & Tech</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Applying chemistry-honed problem-solving methods to build clean datasets and efficient automated architectures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background: rgba(17, 24, 39, 0.4);">
+        <div class="sec-title">
+            <h2>Technical Skills</h2>
+            <p>Tools and technologies I use to build solutions</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-box">
+                <i class="fab fa-python"></i>
+                <h3>Python & Data Science</h3>
+                <p>Data manipulation and statistical analysis utilizing Pandas and NumPy libraries.</p>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-network-wired"></i>
+                <h3>Workflow Automation</h3>
+                <p>Building automated pipelines via n8n, integrating Telegram and WhatsApp with Google Sheets.</p>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-database"></i>
+                <h3>Databases & SQL</h3>
+                <p>Database management, Oracle SQL Developer querying, and ERD structuring.</p>
+            </div>
+            <div class="skill-box">
+                <i class="fas fa-file-excel"></i>
+                <h3>Advanced Excel</h3>
+                <p>Spreadsheet optimization, SUMIF functions, and advanced structural formatting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience">
+        <div class="sec-title">
+            <h2>Experience & Education</h2>
+            <p>My academic milestones and professional development</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="date">2026 - Present</span>
+                    <h3>AI & Data Science Track</h3>
+                    <h4>Digital Egypt Pioneers Initiative (DEPI)</h4>
+                    <p>Engaging in rigorous practical training focused on machine learning, data pipelines, and AI technologies.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="date">August 2026</span>
+                    <h3>Database Fundamentals Certification</h3>
+                    <h4>Mahara-Tech (ITI)</h4>
+                    <p>Successfully completed professional coursework covering core relational database management systems.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="date">Academic Degree</span>
+                    <h3>B.Sc. in Chemistry</h3>
+                    <h4>Al-Azhar University, Assiut</h4>
+                    <p>Building a strong foundation in laboratory research, critical thinking, and structured analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" style="background: rgba(17, 24, 39, 0.4);">
+        <div class="sec-title">
+            <h2>Featured Projects</h2>
+            <p>Practical systems and automation workflows I've engineered</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div>
+                    <h3>Automated Restaurant Order System</h3>
+                    <p>An integrated pipeline built on n8n and Python scripts connecting a Telegram bot to real-time Google Sheets database tracking.</p>
+                </div>
+                <div class="project-tags">
+                    <span class="tag">n8n</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Telegram Bot</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div>
+                    <h3>WhatsApp Product Catalog Automation</h3>
+                    <p>Designed a prototype automated workflow on WhatsApp enabling users to navigate product catalogs and process digital options interactively.</p>
+                </div>
+                <div class="project-tags">
+                    <span class="tag">WhatsApp</span>
+                    <span class="tag">n8n</span>
+                    <span class="tag">API Integration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="sec-title">
+            <h2>Get In Touch</h2>
+            <p>Let's connect for collaborations or technical discussions</p>
+        </div>
+        <div class="contact-box">
+            <p>Whether you have a data project, an automation requirement, or just want to say hi, my inbox is always open.</p>
+            <div class="social-icons">
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://telegram.org" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                <a href="mailto:your_email@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Ahmed Mohammed Khalaf. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Typing Effect
+        const words = ["Data Science & AI Track", "Python & Automation Developer", "Chemistry Student @ Al-Azhar"];
+        let i = 0;
+        let textIndex = 0;
+        
+        function typeWriter() {
+            if (textIndex < words[i].length) {
+                document.getElementById("typing-text").innerHTML += words[i].charAt(textIndex);
+                textIndex++;
+                setTimeout(typeWriter, 80);
+            } else {
+                setTimeout(eraseText, 2000);
+            }
+        }
+
+        function eraseText() {
+            if (textIndex > 0) {
+                document.getElementById("typing-text").innerHTML = words[i].substring(0, textIndex - 1);
+                textIndex--;
+                setTimeout(eraseText, 40);
+            } else {
+                i = (i + 1) % words.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        typeWriter();
+    </script>
+</body>
+</html>
